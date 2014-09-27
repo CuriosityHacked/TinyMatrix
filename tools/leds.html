@@ -1,0 +1,200 @@
+<html>
+<head>
+<style>
+		body {background-color:#000000;}
+		input {
+			width: 20px;
+			margin-left: 50px;
+		}
+		table {
+			border: 3px outset white;
+			padding-left: 20px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		.circle {
+			border-radius: 50%;
+			display: inline-block;
+			margin-right: 20px;
+			width: 50px;
+			height: 50px;
+			position: relative;
+			-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+			box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+		}
+		.on {
+			background-image: -webkit-radial-gradient(45px 45px, circle cover, lightgreen, green);
+			border: 1px solid green;
+		}
+		.off {
+			background-image: -webkit-radial-gradient(45px 45px, circle cover, grey, black);
+			border: 1px solid black;
+		}
+		#resetfield {
+			border: 0px;
+			background-color:#000000;
+		}
+</style>
+<script type="text/javascript">
+
+function checkHex(n){return/^[0-9A-Fa-f]{1,64}$/.test(n)}
+function Hex2Bin(n){
+	if(!checkHex(n))return 0;
+	return parseInt(n,16).toString(2);
+}
+
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+function doit(){
+
+document.getElementById("colA").value = "";
+document.getElementById("colB").value = "";
+document.getElementById("colC").value = "";
+document.getElementById("colD").value = "";
+document.getElementById("colE").value = "";
+document.getElementById("resetfield").value = "";
+
+for (var q=1;q<9;q++) { document.getElementById("colA"+q).className = "circle on"; }
+for (var q=1;q<9;q++) { document.getElementById("colB"+q).className = "circle on"; }
+for (var q=1;q<9;q++) { document.getElementById("colC"+q).className = "circle on"; }
+for (var q=1;q<9;q++) { document.getElementById("colD"+q).className = "circle on"; }
+for (var q=1;q<9;q++) { document.getElementById("colE"+q).className = "circle on"; }
+
+document.getElementById('colA').focus();
+
+}
+
+function moveOnMax(field,nextFieldID){
+  if(field.value.length >= field.maxLength){
+    coldata = pad(Hex2Bin(field.value),8,0);
+    for (var q=1;q<9;q++)
+      {
+       if (coldata[8-q] == 0) { document.getElementById(field.id+q).className = "circle off"; }
+      }
+    document.getElementById(nextFieldID).focus();
+  }
+}
+
+</script>
+</head>
+<body onload="document.getElementById('colA').focus();">
+
+<input type="text" maxlength="2" name="colA" id="colA" onkeyup="moveOnMax(this,'colB')" >
+<input type="text" maxlength="2" name="colB" id="colB" onkeyup="moveOnMax(this,'colC')" >
+<input type="text" maxlength="2" name="colC" id="colC" onkeyup="moveOnMax(this,'colD')" >
+<input type="text" maxlength="2" name="colD" id="colD" onkeyup="moveOnMax(this,'colE')" >
+<input type="text" maxlength="2" name="colE" id="colE" onkeyup="moveOnMax(this,'resetfield')" >
+<input type="text" maxlength="1" name="resetfield" id="resetfield" onkeyup="doit()" >
+
+<table>
+<tr>
+<td>
+<div class="circle on" id="colA1"></div>
+</td><td>
+<div class="circle on" id="colB1"></div>
+</td><td>
+<div class="circle on" id="colC1"></div>
+</td><td>
+<div class="circle on" id="colD1"></div>
+</td><td>
+<div class="circle on" id="colE1"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA2"></div>
+</td><td>
+<div class="circle on" id="colB2"></div>
+</td><td>
+<div class="circle on" id="colC2"></div>
+</td><td>
+<div class="circle on" id="colD2"></div>
+</td><td>
+<div class="circle on" id="colE2"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA3"></div>
+</td><td>
+<div class="circle on" id="colB3"></div>
+</td><td>
+<div class="circle on" id="colC3"></div>
+</td><td>
+<div class="circle on" id="colD3"></div>
+</td><td>
+<div class="circle on" id="colE3"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA4"></div>
+</td><td>
+<div class="circle on" id="colB4"></div>
+</td><td>
+<div class="circle on" id="colC4"></div>
+</td><td>
+<div class="circle on" id="colD4"></div>
+</td><td>
+<div class="circle on" id="colE4"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA5"></div>
+</td><td>
+<div class="circle on" id="colB5"></div>
+</td><td>
+<div class="circle on" id="colC5"></div>
+</td><td>
+<div class="circle on" id="colD5"></div>
+</td><td>
+<div class="circle on" id="colE5"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA6"></div>
+</td><td>
+<div class="circle on" id="colB6"></div>
+</td><td>
+<div class="circle on" id="colC6"></div>
+</td><td>
+<div class="circle on" id="colD6"></div>
+</td><td>
+<div class="circle on" id="colE6"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="circle on" id="colA7"></div>
+</td><td>
+<div class="circle on" id="colB7"></div>
+</td><td>
+<div class="circle on" id="colC7"></div>
+</td><td>
+<div class="circle on" id="colD7"></div>
+</td><td>
+<div class="circle on" id="colE7"></div>
+</td>
+</tr>
+<tr style='display: none;'>
+<td>
+<div class="circle on" id="colA8"></div>
+</td><td>
+<div class="circle on" id="colB8"></div>
+</td><td>
+<div class="circle on" id="colC8"></div>
+</td><td>
+<div class="circle on" id="colD8"></div>
+</td><td>
+<div class="circle on" id="colE8"></div>
+</td>
+</tr>
+</table>
+</body>
+</html>
