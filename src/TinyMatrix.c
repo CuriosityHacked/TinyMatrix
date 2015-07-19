@@ -208,7 +208,7 @@ void clear_bitmap()
 //                                   static 5x7 graphics / symbols //
 /////////////////////////////////////////////////////////////////////
 #define CHARS 15
-unsigned char charset[CHARS][5] PROGMEM = 
+const unsigned char charset[CHARS][5] PROGMEM = 
 {
 	{ 0xFF, 0x41, 0x5D, 0x41, 0xFF },	// psycho 2
 	{ 0x00, 0x3E, 0x22, 0x3E, 0x00 },	// psycho 1
